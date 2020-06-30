@@ -1,0 +1,71 @@
+Exercise: Reviewing Our Front End Code
+Oh no! Your coworkers at NASA have been asked to give a demo of the functionality of the Mission Control dashboard. But the backend code isn't ready yet! Download the front-end-project.zip file in the resources section of the last video. See if you can help our friends at NASA by helping them mock out the backend functionality!
+
+
+
+This is just an exercise for you to get familiar with the frontend code so only do the below task on the front end code file (script.js) we provided for you. Deno backend code will come later :)
+
+
+
+
+
+Part 1. Set up two fake planets for the Destination Exoplanet selector (dropdown menu) on the New Mission page. [Easier]
+
+Part 2. Schedule a mission called "NASA Demo" for two weeks from now. Double check that the mission shows up in the Upcoming page. [Challenging]
+
+This kind of request happens all the time in the software industry! Practice your skills by helping out our front end team at NASA. Good luck!
+
+
+
+
+
+
+
+Part 1: Your loadPlanets function should look something like this:
+
+function loadPlanets() {
+  const planets = [
+    { kepler_name: "X Æ A-12" },
+    { kepler_name: "Beta Gamma B" }
+  ];
+  const planetSelector = document.getElementById("planets-selector");
+  planets.forEach((planet) => {
+    planetSelector.innerHTML += `<option value="${planet.kepler_name}">${planet.kepler_name}</option>`;
+  });
+}
+
+
+Part 2:
+
+Initialize the launches array.
+
+let launches = [];
+In the submitLaunch function change the flightNumber property to use the optional chaining operator ? and the logical OR operator || to default to a flight number of 1.
+
+  const flightNumber = launches[launches.length - 1]?.flightNumber + 1 || 1;
+Add the following below the flightNumber to populate the launch object.
+
+  const customers = [ "NASA", "ZTM" ];
+ 
+  launches.push({
+    target,
+    launchDate: launchDate / 1000,
+    mission,
+    rocket,
+    flightNumber,
+    customers,
+    upcoming: true,
+  });
+And finally, after the above push, show the launch-success message.
+
+  document.getElementById("launch-success").hidden = false;
+
+
+Have questions or issues you are encountering? Post your questions in our #deno channel on Discord! (see lecture 2 to join the community)
+
+missing value
+
+I think this is missing:
+
+upcoming: true,
+from the  launches.push({...});
