@@ -16,6 +16,9 @@ router.get("/", (ctx) => {
 });
 
 router.get("/planets", (ctx) => {
+  //throw new Error("Sample error");
+  //ctx.throw(501, "Sorry planets aren't available!");
+  ctx.throw(400, "Sorry planets aren't available!");
   ctx.response.body = planets.getAllPlanets();
 });
 
