@@ -2,7 +2,7 @@ FROM hayd/deno:alpine-1.1.1
 
 WORKDIR /app
 
-COPY . ./app
+COPY . .
 
 USER deno
 
