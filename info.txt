@@ -1,0 +1,70 @@
+🦖 aeon-nasa $docker build -t aeon-nasa-deno .
+Sending build context to Docker daemon  59.07MB
+Step 1/6 : FROM hayd/deno:alpine-1.1.1
+ ---> 5189d28116a6
+Step 2/6 : WORKDIR /app
+ ---> Using cache
+ ---> c0d4a4091fc3
+Step 3/6 : COPY . .
+ ---> 8695a2f199bd
+Step 4/6 : USER deno
+ ---> Running in 4917b5714829
+Removing intermediate container 4917b5714829
+ ---> 4ada4fe98591
+Step 5/6 : CMD ["run", "--allow-net", "--allow-read", "src/mod.ts"]
+ ---> Running in 871db95540a3
+Removing intermediate container 871db95540a3
+ ---> 06964a02f6d1
+Step 6/6 : EXPOSE 8000
+ ---> Running in 736e6fce73c1
+Removing intermediate container 736e6fce73c1
+ ---> 7a102cc46788
+Successfully built 7a102cc46788
+Successfully tagged aeon-nasa-deno:latest
+🦖 aeon-nasa $docker run -it -p 8000:8000 aeon-nasa-deno
+Download https://deno.land/std@0.57.0/log/mod.ts
+...
+Download https://deno.land/x/lodash@4.17.15-es/_assocIndexOf.js
+Compile file:///app/src/mod.ts
+INFO Downloading launch data...
+You can try ensuring the permissions on the src/ folder are correct by running chmod 755 src and rebuilding your docker file with docker build --no-cache -t aeon-nasa-deno .
+
+You could double check it the src directory is available in your Container by starting a interactive shell in your container with
+
+docker exec -it containerName bash
+To make your life easier, you can also give your docker container a name by running
+
+docker run –it ––name=containerName -p 8000:8000 aeonincode/nasa-deno
+
+To show only running containers use the given command:
+
+docker ps
+To show all containers use the given command:
+
+docker ps -a
+To show the latest created container (includes all states) use the given command:
+
+docker ps -l
+To show n last created containers (includes all states) use the given command:
+
+docker ps -n=-1
+To display total file sizes use the given command:
+
+docker ps -s
+The content presented above is from docker.com.
+
+In the new version of Docker, commands are updated, and some management commands are added:
+
+docker container ls
+It is used to list all the running containers.
+
+docker container ls -a
+And then, if you want to clean them all,
+
+docker rm $(docker ps -aq)
+It is used to list all the containers created irrespective of its state.
+
+And to stop all the Docker containers (force)
+
+docker rm -f $(docker ps -a -q)  
+Here the container is the management command.
